@@ -1,0 +1,7 @@
+2010-04-17 18:39:36 Debug: Notice (1024): Please change the value of 'Security.salt' in app/config/core.php to a salt value specific to your application in [D:\Source\D&T\cake\libs\debugger.php, line 684]
+2010-04-17 18:39:36 Debug: Notice (1024): Please change the value of 'Security.cipherSeed' in app/config/core.php to a numeric (digits only) seed value specific to your application in [D:\Source\D&T\cake\libs\debugger.php, line 688]
+2010-04-17 18:41:38 Debug: Notice (1024): Please change the value of 'Security.salt' in app/config/core.php to a salt value specific to your application in [D:\Source\D&T\cake\libs\debugger.php, line 684]
+2010-04-17 18:41:38 Debug: Notice (1024): Please change the value of 'Security.cipherSeed' in app/config/core.php to a numeric (digits only) seed value specific to your application in [D:\Source\D&T\cake\libs\debugger.php, line 688]
+2010-04-17 18:47:52 Debug: Notice (1024): Please change the value of 'Security.salt' in app/config/core.php to a salt value specific to your application in [D:\Source\D&T\cake\libs\debugger.php, line 684]
+2010-04-17 18:47:52 Debug: Notice (1024): Please change the value of 'Security.cipherSeed' in app/config/core.php to a numeric (digits only) seed value specific to your application in [D:\Source\D&T\cake\libs\debugger.php, line 688]
+2010-04-17 18:56:54 Debug: Notice (1024): Please change the value of 'Security.cipherSeed' in app/config/core.php to a numeric (digits only) seed value specific to your application in [D:\Source\D&T\cake\libs\debugger.php, line 688]
