@@ -1,9 +1,6 @@
-/app/tmp
-/app/tmp/*/*/*
-/plugins
-/vendors
 *.swp
 *.*~
-app/tmp/logs/*.log
-app/tmp/cache/persistent/cake_*
-app/tmp/cache/models/cake_*
+*/tmp/cache/*
+*/tmp/logs/*
+*/tmp/sessions/*
+*/tmp/tests/*
