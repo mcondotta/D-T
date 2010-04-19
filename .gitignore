@@ -1,6 +1,10 @@
 *.swp
 *.*~
+app/tmp/cache/persistent/*
+app/tmp/cache/persistent/cake_*
+*/tmp/cache/persistent/cake_*
 */tmp/cache/*
+*/tmp/cache/*/*
 */tmp/logs/*
 */tmp/sessions/*
 */tmp/tests/*
