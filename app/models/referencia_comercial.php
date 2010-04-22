@@ -1,38 +1,36 @@
 <?php
+class ReferenciaComercial extends AppModel {
+	var $name = 'ReferenciaComercial';
+	var $useDbConfig = 'development';
+	var $primaryKey = 'referencia_comercial_id';
+	var $displayField = 'empresa';
+	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
-class ReferenciaComercial {
-	private $empresa;
-	private $telefone;
-	private $contato;
+	var $belongsTo = array(
+		'PessoaFisica' => array(
+			'className' => 'PessoaFisica',
+			'foreignKey' => 'pessoa_fisica_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
 
-	public function __construct() {
-		$this->empresa = "";
-		$this->telefone = 0;
-		$this->contato = "";
-	}
+	var $hasMany = array(
+		'Fone' => array(
+			'className' => 'Fone',
+			'foreignKey' => 'referencia_comercial_id',
+			'dependent' => false,
+			'conditions' => '',
+			'fields' => '',
+			'order' => '',
+			'limit' => '',
+			'offset' => '',
+			'exclusive' => '',
+			'finderQuery' => '',
+			'counterQuery' => ''
+		)
+	);
 
-	public function getEmpresa() {
-		return $this->empresa;
-	}
-
-	public function setEmpresa($empresa) {
-		$this->empresa = $empresa;
-	}
-
-	public function getTelefone() {
-		return $this->telefone;
-	}
-
-	public function setTelefone($fone) {
-		$this->telefone = $fone;
-	}
-
-	public function getContato() {
-		return $this->contato;
-	}
-
-	public function setContato($contato) {
-		$this->contato = $contato;
-	}
 }
 ?>

@@ -14,3 +14,4 @@ app/tmp/cache/persistent/cake_*
 .settings
 .settings/*
 .buildpath
+*.bak

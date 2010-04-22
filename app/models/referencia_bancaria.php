@@ -1,48 +1,19 @@
 <?php
+class ReferenciaBancaria extends AppModel {
+	var $name = 'ReferenciaBancaria';
+	var $useDbConfig = 'development';
+	var $primaryKey = 'referencia_bancaria_id';
+	var $displayField = 'banco';
+	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
-class ReferenciaBancaria {
-	private $banco;
-	private $agencia;
-	private $conta_corrente;
-	private $gerente;
-
-	public function __construct() {
-		$this->banco = "";
-		$this->agencia = "";
-		$this->conta_corrente = "";
-		$this->gerente = "";
-	}
-
-	public function getBanco() {
-		return $this->banco;
-	}
-
-	public function setBanco($banco) {
-		$this->banco = $banco;
-	}
-
-	public function getAgencia() {
-		return $this->agencia;
-	}
-
-	public function setAgencia($agencia) {
-		$this->agencia = $agencia;
-	}
-
-	public function getContaCorrente() {
-		return $this->conta_corrente;
-	}
-
-	public function setContaCorrente($cc) {
-		$this->conta_corrente = $cc;
-	}
-
-	public function getGerente() {
-		return $this->gerente;
-	}
-
-	public function setGerente($gerente) {
-		$this->gerente = $gererente;
-	}
+	var $belongsTo = array(
+		'PessoaFisica' => array(
+			'className' => 'PessoaFisica',
+			'foreignKey' => 'pessoa_fisica_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
 }
 ?>
