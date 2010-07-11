@@ -59,7 +59,7 @@
  *
  */
 	if (!defined('WEBROOT_DIR')) {
-		define('WEBROOT_DIR', 'DeT');
+		define('WEBROOT_DIR', basename(dirname(__FILE__)));
 	}
 	if (!defined('WWW_ROOT')) {
 		define('WWW_ROOT', dirname(__FILE__) . DS);
@@ -82,7 +82,3 @@
 		$Dispatcher = new Dispatcher();
 		$Dispatcher->dispatch();
 	}
-	if (Configure::read() > 0) {
-		echo "<!-- " . round(getMicrotime() - $TIME_START, 4) . "s -->";
-	}
-?>

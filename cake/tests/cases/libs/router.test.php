@@ -4,14 +4,14 @@
  *
  * PHP versions 4 and 5
  *
- * CakePHP(tm) Tests <https://trac.cakephp.org/wiki/Developement/TestSuite>
+ * CakePHP(tm) Tests <http://book.cakephp.org/view/1196/Testing>
  * Copyright 2005-2010, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  *	Licensed under The Open Group Test Suite License
  *	Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright 2005-2010, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          https://trac.cakephp.org/wiki/Developement/TestSuite CakePHP(tm) Tests
+ * @link          http://book.cakephp.org/view/1196/Testing CakePHP(tm) Tests
  * @package       cake
  * @subpackage    cake.tests.cases.libs
  * @since         CakePHP(tm) v 1.2.0.4206
@@ -1665,6 +1665,36 @@ class RouterTest extends CakeTestCase {
 	}
 
 /**
+ * test that requests with a trailing dot don't loose the do.
+ *
+ * @return void
+ */
+	function testParsingWithTrailingPeriod() {
+		Router::reload();
+		$result = Router::parse('/posts/view/something.');
+		$this->assertEqual($result['pass'][0], 'something.', 'Period was chopped off %s');
+
+		$result = Router::parse('/posts/view/something. . .');
+		$this->assertEqual($result['pass'][0], 'something. . .', 'Period was chopped off %s');
+	}
+
+/**
+ * test that requests with a trailing dot don't loose the do.
+ *
+ * @return void
+ */
+	function testParsingWithTrailingPeriodAndParseExtensions() {
+		Router::reload();
+		Router::parseExtensions('json');
+
+		$result = Router::parse('/posts/view/something.');
+		$this->assertEqual($result['pass'][0], 'something.', 'Period was chopped off %s');
+
+		$result = Router::parse('/posts/view/something. . .');
+		$this->assertEqual($result['pass'][0], 'something. . .', 'Period was chopped off %s');
+	}
+
+/**
  * testParsingWithPrefixes method
  *
  * @access public
@@ -2534,5 +2564,3 @@ class PluginShortRouteTestCase extends  CakeTestCase {
 		$this->assertEqual($result, '/foo');
 	}
 }
-
-?>

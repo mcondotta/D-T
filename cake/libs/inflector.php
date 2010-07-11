@@ -121,7 +121,7 @@ class Inflector {
 			'/(shoe|slave)s$/i' => '\1',
 			'/(o)es$/i' => '\1',
 			'/ouses$/' => 'ouse',
-			'/uses$/' => 'us',
+			'/([^a])uses$/' => '\1us',
 			'/([m|l])ice$/i' => '\1ouse',
 			'/(x|ch|ss|sh)es$/i' => '\1',
 			'/(m)ovies$/i' => '\1\2ovie',
@@ -133,7 +133,7 @@ class Inflector {
 			'/(drive)s$/i' => '\1',
 			'/([^fo])ves$/i' => '\1fe',
 			'/(^analy)ses$/i' => '\1sis',
-			'/((a)naly|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)ses$/i' => '\1\2sis',
+			'/(analy|(b)a|(d)iagno|(p)arenthe|(p)rogno|(s)ynop|(t)he)ses$/i' => '\1\2sis',
 			'/([ti])a$/i' => '\1um',
 			'/(p)eople$/i' => '\1\2erson',
 			'/(m)en$/i' => '\1an',
@@ -192,7 +192,7 @@ class Inflector {
 		'/Ð|Ď|Đ/' => 'D',
 		'/ð|ď|đ/' => 'd',
 		'/È|É|Ê|Ë|Ē|Ĕ|Ė|Ę|Ě/' => 'E',
-		'/è|é|ê|ë|ē|ĕ|ė|ę|ě|&/' => 'e',
+		'/è|é|ê|ë|ē|ĕ|ė|ę|ě/' => 'e',
 		'/Ĝ|Ğ|Ġ|Ģ/' => 'G',
 		'/ĝ|ğ|ġ|ģ/' => 'g',
 		'/Ĥ|Ħ/' => 'H',
@@ -369,7 +369,15 @@ class Inflector {
 						} else {
 							$_this->{$var}[$rule] = array_merge($pattern, $_this->{$var}[$rule]);
 						}
-						unset($rules[$rule], $_this->{$var}['cache' . ucfirst($rule)], $_this->{$var}['merged'][$rule]);
+						unset($rules[$rule], $_this->{$var}['cache' . ucfirst($rule)]);
+						if (isset($_this->{$var}['merged'][$rule])) {
+							unset($_this->{$var}['merged'][$rule]);
+						}
+						if ($type === 'plural') {
+							$_this->_pluralized = $_this->_tableize = array();
+						} elseif ($type === 'singular') {
+							$_this->_singularized = array();
+						}
 					}
 				}
 				$_this->{$var}['rules'] = array_merge($rules, $_this->{$var}['rules']);
@@ -616,4 +624,3 @@ class Inflector {
 		return preg_replace(array_keys($map), array_values($map), $string);
 	}
 }
-?>

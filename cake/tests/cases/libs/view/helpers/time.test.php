@@ -4,14 +4,14 @@
  *
  * PHP versions 4 and 5
  *
- * CakePHP(tm) Tests <https://trac.cakephp.org/wiki/Developement/TestSuite>
+ * CakePHP(tm) Tests <http://book.cakephp.org/view/1196/Testing>
  * Copyright 2005-2010, Cake Software Foundation, Inc. (http://cakefoundation.org)
  *
  *  Licensed under The Open Group Test Suite License
  *  Redistributions of files must retain the above copyright notice.
  *
  * @copyright     Copyright 2005-2010, Cake Software Foundation, Inc. (http://cakefoundation.org)
- * @link          https://trac.cakephp.org/wiki/Developement/TestSuite CakePHP(tm) Tests
+ * @link          http://book.cakephp.org/view/1196/Testing CakePHP(tm) Tests
  * @package       cake
  * @subpackage    cake.tests.cases.libs.view.helpers
  * @since         CakePHP(tm) v 1.2.0.4206
@@ -661,9 +661,7 @@ class TimeHelperTest extends CakeTestCase {
 			'locales' => array(TEST_CAKE_CORE_INCLUDE_PATH . 'tests' . DS . 'test_app' . DS . 'locale' . DS)
 		), true);
 		Configure::write('Config.language', 'time_test');
-		$time = 1263487419; // Thu Jan 14 11:43:39 2010
-		$offset = 5 * 60 * 60;
-		$time = $time - date('Z') - $offset - (date('I', $time) * 60 * 60);
+		$time = strtotime('Thu Jan 14 11:43:39 2010');
 
 		$result = $this->Time->convertSpecifiers('%a', $time);
 		$expected = 'jue';
@@ -753,9 +751,7 @@ class TimeHelperTest extends CakeTestCase {
 			'locales' => array(TEST_CAKE_CORE_INCLUDE_PATH . 'tests' . DS . 'test_app' . DS . 'locale' . DS)
 		), true);
 		Configure::write('Config.language', 'time_test');
-		$time = 1263495568; //Thu Jan 14 13:59:28 2010
-		$offset = 5 * 60 * 60;
-		$time = $time - date('Z') - $offset - (date('I', $time) * 60 * 60);
+		$time = strtotime('Thu Jan 14 13:59:28 2010');
 
 		$result = $this->Time->i18nFormat($time);
 		$expected = '14/01/10';
@@ -786,4 +782,3 @@ class TimeHelperTest extends CakeTestCase {
 		$this->assertEqual($this->Time->format($time, '%c'), $this->Time->i18nFormat($time, '%c'));
 	}
 }
-?>
